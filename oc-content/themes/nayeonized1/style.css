@@ -100,7 +100,7 @@ option.pad { margin-left:10px;}
 
 /* Search form */
 .search input { border:1px solid #b4b4b4; font-size:12px; height: 26px; line-height: 26px; margin-right:10px; padding:0 10px; vertical-align: middle; }
-.search input#query { width:300px; }
+.search input#query { width:200px; }
 .search select { margin-right:10px; }
 .home .search a { display:none; }
 .search .extras { padding-top:10px; }
@@ -116,7 +116,7 @@ ul.breadcrumb li { float: left; padding: 0 2px; }
 .footer-links li { float: left; width: 220px; padding: 5px; font-size: 11px; }
 
 /* List & Item Search Row */
-.form_publish .search { float:left; width:700px; }
+.form_publish .search { float:left; width:740px; }
 .form_publish .search #expand_advanced { font-size:11px; margin-left:10px;}
 .form_publish .search .extras { display:none; }
 .form_publish .publish_button { background:#ec4901 url(images/button_link_bg.gif) repeat-x top; border:1px solid #c54f00; float:right; margin:9px 10px 0 0; padding:6px 10px 7px; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; }
@@ -128,13 +128,14 @@ ul.breadcrumb li { float: left; padding: 0 2px; }
 .home #main { width:100%; }
 .home #sidebar { float:right; width:240px; }
 .home .search { border-bottom: 1px solid #BBB; margin-bottom:15px; }
-.home #content_wrapper { float:left; width: 748px; background-color: #fedcff;};
-#slider { text-align:center; };
+.home #content_wrapper { float:left; width: 708px; padding:15px 20px 20px 20px;background-color: #fedcff; border:1px solid #290158; };
+.home #slider { text-align:center; };
+.home #navbar { display: block; background-size: 100%; }
 
 /* Latest ads list */
 .home #main h1 { color:#000; font:15px Arial;}
 .home #main h1 strong { display:block; font-weight:bold; padding-bottom:7px; }
-.home #main .categories { clear:both; float:left; margin-bottom:25px; padding:15px 0 0 10px; width:238px;height:100%; background-color: #fbadff; border:1px solid #290158; height:739px;}
+.home #main .categories { clear:both; float:left; padding:40px 30px 25px 70px; width:148px; height:1437px; background-color: #fbadff; border:1px solid #290158;}
 .home #main .categories .col { float:left; width:215px; }
 .home #main .categories .col.c2 { margin:0 25px; }
 .home #main .categories.c2 .col { float:left; width:335px; }

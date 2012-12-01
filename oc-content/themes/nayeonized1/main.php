@@ -52,9 +52,9 @@
                         </div>
                     <?php } ?>
                </div>
-               <div id="content_wrapper">
-                    <div id="slider" style="text-align:center; margin-top:10px">
-                        <img src="oc-content/themes/nayeonized1/images/slider.png"/>
+               <div id="content_wrapper" >
+                    <div id="slider">
+                        <img src="oc-content/themes/nayeonized1/images/slider.png" width="700" height="315"/>
                     </div>
                     <div class="form_publish">
                     <?php osc_current_web_theme_path('inc.search.php') ; ?>
@@ -92,7 +92,7 @@
                             </table>
                             <?php if( osc_count_latest_items() == osc_max_latest_items() ) { ?>
                             <p class='pagination'><?php echo osc_search_pagination(); ?></p>
-                                <p class="see_more_link"><a href="<?php echo osc_search_show_all_url();?>"><strong><?php _e("See all offers", 'modern'); ?> &raquo;</strong></a></p>
+                                <p class="see_more_link"><a href="<?php echo osc_search_show_all_url();?>"><strong><?php _e("See all listings", 'modern'); ?> &raquo;</strong></a></p>
                             <?php } ?>
                         <?php View::newInstance()->_erase('items') ; } ?>
                     </div>

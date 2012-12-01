@@ -77,13 +77,22 @@
         </ul>
         <?php if( osc_users_enabled() || ( !osc_users_enabled() && !osc_reg_user_post() )) { ?>
             <div class="form_publish">
-                <strong class="publish_button"><a href="<?php echo osc_item_post_url_in_category() ; ?>"><?php _e("Publish your ad for free", 'modern');?></a></strong>
+                <strong class="publish_button"><a href="<?php echo osc_item_post_url_in_category() ; ?>"><?php _e("Publish a link or site", 'modern');?></a></strong>
             </div>
         <?php } ?>
         <div class="empty"></div>
     </div>
     <div id="navbar">
-        <img src="oc-content/themes/nayeonized1/images/navbar.png" />
+        <img src="oc-content/themes/nayeonized1/images/navbar.png" alt="" border="0" usemap="#theimageMap" id="theimage" />
+        <map name="theimageMap" id="theimageMap">
+          <area shape="rect" coords="39,16,133,56" href="<?php echo osc_base_url() ; ?>" />
+          <area shape="rect" coords="148,16,232,57" href="index.php?page=page&id=21" />
+          <area shape="rect" coords="262,15,380,58" href="index.php?page=page&id=22" />
+          <area shape="rect" coords="409,14,474,58" href="index.php?page=page&id=23" />
+          <area shape="rect" coords="503,13,647,57" href="index.php?page=page&id=24" />
+          <area shape="rect" coords="671,14,812,58" href="index.php?page=page&id=25" />
+          <area shape="rect" coords="845,14,938,57" href="index.php?page=page&id=26" />
+        </map>
     </div>
 </div>
 <div class="clear"></div>

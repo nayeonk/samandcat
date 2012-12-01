@@ -78,7 +78,8 @@ option.pad { margin-left:10px;}
 #header { clear:both; position: relative; width:1000px; }
 #header #logo { color:#000; font:30px Georgia, Times, 'Times New Roman', serif; text-decoration:none; }
 #header #logo strong { font-weight:normal; }
-#header #user_menu { display:inline; font-size:11px; position:absolute; right:10px; top:0; text-align: right; }
+#header #topbanner { display:block; background-size:100%; }
+#header #user_menu { display:inline; font-size:11px; position:absolute; right:15px; top:150px; text-align: right; }
 #header #user_menu li { border-right:2px solid #e8e8e8; color:#999; display: inline; padding:0 7px; position:relative; }
 #header #user_menu li.last { border:none; padding-right:0; }
 #header #user_menu li ul { background:#FFF; border:1px solid #333; display:none; left:7px; position:absolute; top:14px; -moz-border-radius:5px; border-radius:5px; }

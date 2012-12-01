@@ -54,7 +54,7 @@
                </div>
                <div id="content_wrapper" >
                     <div id="slider">
-                        <img src="oc-content/themes/nayeonized1/images/slider.png" width="700" height="315"/>
+                        <iframe src="slider/slider.html" frameborder="0" height="315" width="700" scrolling="no"></iframe>
                     </div>
                     <div class="form_publish">
                     <?php osc_current_web_theme_path('inc.search.php') ; ?>

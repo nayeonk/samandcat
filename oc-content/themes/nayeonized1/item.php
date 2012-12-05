@@ -94,16 +94,6 @@
                         <?php } ?>
                     </div>
                     <?php osc_run_hook('item_detail', osc_item() ) ; ?>
-                    <p class="contact_button">
-                        <?php if( !osc_item_is_expired () ) { ?>
-                        <?php if( !( ( osc_logged_user_id() == osc_item_user_id() ) && osc_logged_user_id() != 0 ) ) { ?>
-                            <?php     if(osc_reg_user_can_contact() && osc_is_web_user_logged_in() || !osc_reg_user_can_contact() ) { ?>
-                                <strong><a href="#contact"><?php _e('Contact seller', 'modern') ; ?></a></strong>
-                            <?php     } ?>
-                        <?php     } ?>
-                        <?php } ?>
-                        <strong class="share"><a href="<?php echo osc_item_send_friend_url() ; ?>" rel="nofollow"><?php _e('Share', 'modern') ; ?></a></strong>
-                    </p>
                     <?php osc_run_hook('location') ; ?>
                 </div>
                 <!-- plugins -->
@@ -178,69 +168,6 @@
                     </div>
                     <?php } ?>
                 <?php } ?>
-                <div id="contact">
-                    <h2><?php _e("Contact publisher", 'modern') ; ?></h2>
-                    <?php if( osc_item_is_expired () ) { ?>
-                        <p>
-                            <?php _e("The listing is expired. You can't contact the publisher.", 'modern') ; ?>
-                        </p>
-                    <?php } else if( ( osc_logged_user_id() == osc_item_user_id() ) && osc_logged_user_id() != 0 ) { ?>
-                        <p>
-                            <?php _e("It's your own listing, you can't contact the publisher.", 'modern') ; ?>
-                        </p>
-                    <?php } else if( osc_reg_user_can_contact() && !osc_is_web_user_logged_in() ) { ?>
-                        <p>
-                            <?php _e("You must log in or register a new account in order to contact the advertiser", 'modern') ; ?>
-                        </p>
-                        <p class="contact_button">
-                            <strong><a href="<?php echo osc_user_login_url() ; ?>"><?php _e('Login', 'modern') ; ?></a></strong>
-                            <strong><a href="<?php echo osc_register_account_url() ; ?>"><?php _e('Register for a free account', 'modern'); ?></a></strong>
-                        </p>
-                    <?php } else { ?>
-                        <?php if( osc_item_user_id() != null ) { ?>
-                            <p class="name"><?php _e('Name', 'modern') ?>: <a href="<?php echo osc_user_public_profile_url( osc_item_user_id() ); ?>" ><?php echo osc_item_contact_name(); ?></a></p>
-                        <?php } else { ?>
-                            <p class="name"><?php _e('Name', 'modern') ?>: <?php echo osc_item_contact_name(); ?></p>
-                        <?php } ?>
-                        <?php if( osc_item_show_email() ) { ?>
-                            <p class="email"><?php _e('E-mail', 'modern'); ?>: <?php echo osc_item_contact_email(); ?></p>
-                        <?php } ?>
-                        <?php if ( osc_user_phone() != '' ) { ?>
-                            <p class="phone"><?php _e("Tel", 'modern'); ?>.: <?php echo osc_user_phone() ; ?></p>
-                        <?php } ?>
-                        <ul id="error_list"></ul>
-                        <?php ContactForm::js_validation(); ?>
-                        <form action="<?php echo osc_base_url(true) ; ?>" method="post" name="contact_form" id="contact_form">
-                            <?php osc_prepare_user_info() ; ?>
-                            <fieldset>
-                                <label for="yourName"><?php _e('Your name', 'modern') ; ?>:</label> <?php ContactForm::your_name(); ?>
-                                <label for="yourEmail"><?php _e('Your e-mail address', 'modern') ; ?>:</label> <?php ContactForm::your_email(); ?>
-                                <label for="phoneNumber"><?php _e('Phone number', 'modern') ; ?> (<?php _e('optional', 'modern'); ?>):</label> <?php ContactForm::your_phone_number(); ?>
-                                <label for="message"><?php _e('Message', 'modern') ; ?>:</label> <?php ContactForm::your_message(); ?>
-                                <input type="hidden" name="action" value="contact_post" />
-                                <input type="hidden" name="page" value="item" />
-                                <input type="hidden" name="id" value="<?php echo osc_item_id() ; ?>" />
-                                <?php if( osc_recaptcha_public_key() ) { ?>
-                                <script type="text/javascript">
-                                    var RecaptchaOptions = {
-                                        theme : 'custom',
-                                        custom_theme_widget: 'recaptcha_widget'
-                                    };
-                                </script>
-                                <style type="text/css"> div#recaptcha_widget, div#recaptcha_image > img { width:280px; } </style>
-                                <div id="recaptcha_widget">
-                                    <div id="recaptcha_image"><img /></div>
-                                    <span class="recaptcha_only_if_image"><?php _e('Enter the words above','modern'); ?>:</span>
-                                    <input type="text" id="recaptcha_response_field" name="recaptcha_response_field" />
-                                    <div><a href="javascript:Recaptcha.showhelp()"><?php _e('Help', 'modern'); ?></a></div>
-                                </div>
-                                <?php } ?>
-                                <?php osc_show_recaptcha(); ?>
-                                <button type="submit"><?php _e('Send', 'modern') ; ?></button>
-                            </fieldset>
-                        </form>
-                    <?php } ?>
-                </div>
             </div>
         </div>
         <?php osc_current_web_theme_path('footer.php') ; ?>

@@ -28,9 +28,29 @@
     </head>
     <body>
         <?php osc_current_web_theme_path('header.php') ; ?>
-        <div class="page">
-            <h1><?php echo osc_static_page_title() ; ?></h1>
-            <div><?php echo osc_static_page_text() ; ?></div>
+        <div class="subpage">
+            <div class="categories">
+                        <?php osc_goto_first_category() ; ?>
+                        
+                        <?php while ( osc_has_categories() ) { ?>
+                            <div class="category">
+                                <h1><strong><a class="category cat_<?php echo osc_category_id() ; ?>" href="<?php echo osc_search_category_url() ; ?>"><?php echo osc_category_name() ; ?></a> <span>(<?php echo osc_category_total_items() ; ?>)</span></strong></h1>
+                                <?php if ( osc_count_subcategories() > 0 ) { ?>
+                                    <ul>
+                                        <?php while ( osc_has_subcategories() ) { ?>
+                                            <li><a class="category cat_<?php echo osc_category_id() ; ?>" href="<?php echo osc_search_category_url() ; ?>"><?php echo osc_category_name() ; ?></a> <span>(<?php echo osc_category_total_items() ; ?>)</span></li>
+                                        <?php } ?>
+                                    </ul>
+                                <?php } ?>
+                            </div>
+                        <?php } ?>
+            </div>
+            <div class="subpage_content">
+                <h1><?php echo osc_static_page_title() ; ?></h1>
+                <hr />
+                <div><?php echo osc_static_page_text() ; ?></div>
+            </div>
+            <div style="clear:both"></div>
         </div>
         <?php osc_current_web_theme_path('footer.php') ; ?>
     </body>

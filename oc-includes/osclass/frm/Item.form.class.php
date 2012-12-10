@@ -464,7 +464,8 @@
                 <?php } ?>
                 <?php if(osc_images_enabled_at_items()) { ?>
                 "photos[]": {
-                    accept: "<?php echo osc_allowed_extension(); ?>"
+                    accept: "<?php echo osc_allowed_extension(); ?>",
+                    required: true
                 },
                 <?php } ?>
                 <?php if($path == 'front') { ?>
@@ -492,7 +493,8 @@
                 <?php } ?>
                 <?php if(osc_images_enabled_at_items()) { ?>
                 "photos[]": {
-                    accept: "<?php printf(__("Photo: must be %s"), osc_allowed_extension()); ?>."
+                    accept: "<?php printf(__("Photo: must be %s"), osc_allowed_extension()); ?>.",
+                    required: "<?php _e("Photo: this field is required"); ?>."
                 },
                 <?php } ?>
                 <?php if($path == 'front') { ?>

@@ -25,6 +25,12 @@
         <?php osc_current_web_theme_path('head.php') ; ?>
         <meta name="robots" content="noindex, nofollow" />
         <meta name="googlebot" content="noindex, nofollow" />
+
+        <style>
+            table, tbody, tfoot, thead, tr, th, td {
+                vertical-align: top;
+            }
+        </style>
     </head>
     <body>
         <?php osc_current_web_theme_path('header.php') ; ?>

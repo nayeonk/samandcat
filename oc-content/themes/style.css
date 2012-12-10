@@ -130,10 +130,9 @@ ul.breadcrumb li { float: left; padding: 0 2px; }
 .form_publish .search #expand_advanced { font-size:11px; margin-left:10px;}
 .form_publish .search .extras { display:none; }
 .form_publish .publish_button { height:32px; width:192px; padding-top: 8px; padding-left: 14px; background:#ec4901 url(images/button_link_bg.gif) repeat-x top; border:1px solid #c54f00;  -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; }
-.form_publish .publish_button:hover { background:#ec4901 url(); cursor: pointer;}
 .form_publish .margin-bottom { margin-bottom: 10px; margin-top: 0px; }
 .form_publish .publish_button a { background:url(images/button_link_icon.gif) no-repeat 0 2px; color:#FFF; float:left; padding-left:15px; text-decoration:none; font-size:12pt; font-family: HoboStd;}
-.form_publish .publish_button a:hover { text-decoration: underline; }
+.form_publish .publish_button a:hover { text-decoration: underline;}
 
 /* -- HOME --------------------------------------- */
 .home #main { width:100%; overflow: hidden; }

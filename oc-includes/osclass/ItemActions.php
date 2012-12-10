@@ -1340,6 +1340,8 @@
                 osc_run_hook('hook_email_admin_new_item', $item);
             }
         }
+
+        
     }
 
 ?>

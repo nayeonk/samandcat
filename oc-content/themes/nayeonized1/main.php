@@ -28,6 +28,15 @@
     </head>
     <body>
         <?php osc_current_web_theme_path('header.php') ; ?>
+        <?php osc_show_widgets('header') ; $breadcrumb = osc_breadcrumb('&raquo;', false);
+            if( $breadcrumb != '') { ?>
+            <div class="breadcrumb">
+                <?php echo $breadcrumb; ?>
+                <div class="clear"></div>
+            </div>
+        <?php
+           }
+        ?>
         <div class="content home">
             <div id="main">
                 <?php
@@ -60,9 +69,9 @@
                     <?php osc_current_web_theme_path('inc.search.php') ; ?>
                     </div>
                     <div class="latest_ads">
-                        <h1><strong><?php _e('Latest Listings', 'modern') ; ?></strong></h1>
+                        <h1><strong><?php _e('Latest Posts', 'modern') ; ?></strong></h1>
                         <?php if( osc_count_latest_items() == 0) { ?>
-                            <p class="empty"><?php _e('No Latest Listings', 'modern') ; ?></p>
+                            <p class="empty"><?php _e('No Latest Posts', 'modern') ; ?></p>
                         <?php } else { ?>
                             <table border="0" cellspacing="0">
                                  <tbody>
@@ -82,7 +91,7 @@
                                             <?php } ?>
                                              <td class="text">
                                                  <h3><a href="<?php echo osc_item_url() ; ?>"><?php echo osc_item_title() ; ?></a></h3>
-                                                 <p><strong><?php if( osc_price_enabled_at_items() ) { echo osc_item_formated_price() ; ?> - <?php } echo osc_item_city(); ?> (<?php echo osc_item_region();?>) - <?php echo osc_format_date(osc_item_pub_date()); ?></strong></p>
+                                                 <p><strong><?php echo osc_item_category() ?> - <?php if ( osc_item_meta_name() == "language" ) { ?> <?php echo osc_item_meta_value(); ?> <?php } ?></strong></p>
                                                  <p><?php echo osc_highlight( strip_tags( osc_item_description() ) ) ; ?></p>
                                              </td>                                       
                                          </tr>
@@ -92,7 +101,7 @@
                             </table>
                             <?php if( osc_count_latest_items() == osc_max_latest_items() ) { ?>
                             <p class='pagination'><?php echo osc_search_pagination(); ?></p>
-                                <p class="see_more_link"><a href="<?php echo osc_search_show_all_url();?>"><strong><?php _e("See all listings", 'modern'); ?> &raquo;</strong></a></p>
+                                <p class="see_more_link"><a href="<?php echo osc_search_show_all_url();?>"><strong><?php _e("See all posts", 'modern'); ?> &raquo;</strong></a></p>
                             <?php } ?>
                         <?php View::newInstance()->_erase('items') ; } ?>
                     </div>

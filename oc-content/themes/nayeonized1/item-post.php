@@ -86,11 +86,34 @@
                 });
             });
             <?php }; ?>
+            $().ready(function(){
+                $(".description textarea").attr("value", "All description must be written in English.");
+                $("#meta_link").attr("value", "(i.e. http://www.youtube.com)");
+
+                $(".description textarea").bind('click', function() {
+                    $(this).attr("value", "");
+                });
+                $("#meta_link").bind('click', function() {
+                    $(this).attr("value", "");
+                });
+            });
         </script>
         <!-- end only item-post.php -->
+
+
     </head>
     <body>
         <?php osc_current_web_theme_path('header.php') ; ?>
+         <?php osc_show_widgets('header') ;
+             $breadcrumb = osc_breadcrumb('&raquo;', false);
+            if( $breadcrumb != '') { ?>
+            <div class="breadcrumb">
+            <?php echo $breadcrumb; ?>
+            <div class="clear"></div>
+            </div>
+        <?php
+           }
+        ?>
         <div class="content add_item">
             <h1><strong><?php _e('Publish a listing', 'modern'); ?></strong></h1>
             <ul id="error_list"></ul>
@@ -107,6 +130,7 @@
                         <div class="row">
                             <?php ItemForm::multilanguage_title_description(); ?>
                         </div>
+                        <?php ItemForm::plugin_post_item(); ?>
                     </div>
                     <?php if( osc_price_enabled_at_items() ) { ?>
                     <div class="box price">
@@ -117,7 +141,10 @@
                     <?php } ?>
                     <?php if( osc_images_enabled_at_items() ) { ?>
                     <div class="box photos">
-                        <h2><?php _e('Photos', 'modern'); ?></h2>
+                        <h2><?php _e('Screenshot or Images *', 'modern'); ?></h2>
+                        If submitting with a link, the screenshot of the website or thumbnail of the video is required. <br/>
+                        If photos only, upload photo.<br/>
+                        <strong>Pick up to 4 photos (accepts .jpg and .png) </strong> <br/><br/>
                         <div id="photos">
                             <div class="row">
                                 <input type="file" name="photos[]" />
@@ -127,29 +154,7 @@
                     </div>
                     <?php } ?>
                 
-                    <div class="box location">
-                        <h2><?php _e('Listing Location', 'modern'); ?></h2>
-                        <div class="row">
-                            <label for="countryId"><?php _e('Country', 'modern'); ?></label>
-                            <?php ItemForm::country_select(osc_get_countries(), osc_user()) ; ?>
-                        </div>
-                        <div class="row">
-                            <label for="regionId"><?php _e('Region', 'modern'); ?></label>
-                            <?php ItemForm::region_text(osc_user()) ; ?>
-                        </div>
-                        <div class="row">
-                            <label for="city"><?php _e('City', 'modern'); ?></label>
-                            <?php ItemForm::city_text(osc_user()) ; ?>
-                        </div>
-                        <div class="row">
-                            <label for="city"><?php _e('City Area', 'modern'); ?></label>
-                            <?php ItemForm::city_area_text(osc_user()) ; ?>
-                        </div>
-                        <div class="row">
-                            <label for="address"><?php _e('Address', 'modern'); ?></label>
-                            <?php ItemForm::address_text(osc_user()) ; ?>
-                        </div>
-                    </div>
+                    
                     <!-- seller info -->
                     <?php if(!osc_is_web_user_logged_in() ) { ?>
                     <div class="box seller_info">
@@ -162,15 +167,9 @@
                             <label for="contactEmail"><?php _e('E-mail', 'modern'); ?> *</label>
                             <?php ItemForm::contact_email_text() ; ?>
                         </div>
-                        <div class="row">
-                            <div style="width: 120px;text-align: right;float:left;">
-                                <?php ItemForm::show_email_checkbox() ; ?>
-                            </div>
-                            <label for="showEmail" style="width: 250px;"><?php _e('Show e-mail on the listing page', 'modern'); ?></label>
-                        </div>
                     </div>
                     <?php }; ?>
-                    <?php ItemForm::plugin_post_item(); ?>
+                    
                     <?php if( osc_recaptcha_items_enabled() ) {?>
                     <div class="box">
                         <div class="row">

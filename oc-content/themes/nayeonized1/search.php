@@ -58,6 +58,8 @@
             </style>
             <script type="text/javascript">
                 $(document).ready(function(){
+
+
                     $('li.parent').each(function() {
                         var totalInputSub = $(this).find('ul.sub>li>input').size();
                         var totalInputSubChecked = $(this).find('ul.sub>li>input:checked').size();
@@ -178,12 +180,32 @@
                             }
                         }
                     });
+                    //$(".main #query").attr("value","hello");
                 });
             </script>
     </head>
     <body>
         <?php osc_current_web_theme_path('header.php') ; ?>
         <div class="content list">
+            <div class="form_publish">
+                <?php osc_current_web_theme_path('inc.search.php') ; ?>
+            </div>
+            <div class="categories">
+                    <?php osc_goto_first_category() ; ?>
+                    
+                    <?php while ( osc_has_categories() ) { ?>
+                        <div class="category">
+                            <h1><strong><a class="category cat_<?php echo osc_category_id() ; ?>" href="<?php echo osc_search_category_url() ; ?>"><?php echo osc_category_name() ; ?></a> <span>(<?php echo osc_category_total_items() ; ?>)</span></strong></h1>
+                            <?php if ( osc_count_subcategories() > 0 ) { ?>
+                                <ul>
+                                    <?php while ( osc_has_subcategories() ) { ?>
+                                        <li><a class="category cat_<?php echo osc_category_id() ; ?>" href="<?php echo osc_search_category_url() ; ?>"><?php echo osc_category_name() ; ?></a> <span>(<?php echo osc_category_total_items() ; ?>)</span></li>
+                                    <?php } ?>
+                                </ul>
+                            <?php } ?>
+                        </div>
+                    <?php } ?>
+               </div>
             <div id="main">
                 <div class="ad_list">
                     <div id="list_head">
@@ -199,17 +221,15 @@
                                     $orderType = ($params['iOrderType'] == 'asc') ? '0' : '1'; ?>
                                     <?php if(osc_search_order() == $params['sOrder'] && osc_search_order_type() == $orderType) { ?>
                                         <a class="current" href="<?php echo osc_update_search_url($params) ; ?>"><?php echo $label; ?></a>
-                                    <?php } else { ?>
-                                        <a href="<?php echo osc_update_search_url($params) ; ?>"><?php echo $label; ?></a>
                                     <?php } ?>
-                                    <?php if ($i != count($orders)-1) { ?>
-                                        <span>|</span>
-                                    <?php } ?>
-                                    <?php $i++ ; ?>
                                 <?php } ?>
                             </p>
                         </div>
                     </div>
+                    
+                            <div class="paginate" >
+                                <?php echo osc_search_pagination(); ?>
+                            </div>
                     <?php if(osc_count_items() == 0) { ?>
                         <p class="empty" ><?php printf(__('There are no results matching "%s"', 'modern'), osc_search_pattern()) ; ?></p>
                     <?php } else { ?>
@@ -227,87 +247,6 @@
                     <?php } ?>
                     </ul>
                     <div class="clear"></div>
-                </div>
-            </div>
-            <div id="sidebar">
-                <div class="filters">
-                    <form action="<?php echo osc_base_url(true); ?>" method="get" onsubmit="return doSearch()">
-                        <input type="hidden" name="page" value="search" />
-                        <input type="hidden" name="sOrder" value="<?php echo osc_search_order(); ?>" />
-                        <input type="hidden" name="iOrderType" value="<?php $allowedTypesForSorting = Search::getAllowedTypesForSorting() ; echo $allowedTypesForSorting[osc_search_order_type()]; ?>" />
-                        <?php foreach(osc_search_user() as $userId) { ?>
-                        <input type="hidden" name="sUser[]" value="<?php echo $userId; ?>" />
-                        <?php } ?>
-                        <fieldset class="box location">
-                            <h3><strong><?php _e('Your search', 'modern'); ?></strong></h3>
-                            <div class="row one_input">
-                                <input type="text" name="sPattern" id="query" value="<?php echo osc_esc_html( osc_search_pattern() ); ?>" />
-                                <div id="search-example"></div>
-                            </div>
-                            <h3><strong><?php _e('Location', 'modern') ; ?></strong></h3>
-                            <div class="row one_input">
-                                <h6><?php _e('City', 'modern'); ?></h6>
-                                <input type="text" id="sCity" name="sCity" value="<?php echo osc_esc_html( osc_search_city() ); ?>" />
-                            </div>
-                        </fieldset>
-
-                        <fieldset class="box show_only">
-                            <?php if( osc_images_enabled_at_items() ) { ?>
-                            <h3><strong><?php _e('Show only', 'modern') ; ?></strong></h3>
-                            <div class="row checkboxes">
-                                <ul>
-                                    <li>
-                                        <input type="checkbox" name="bPic" id="withPicture" value="1" <?php echo (osc_search_has_pic() ? 'checked="checked"' : ''); ?> />
-                                        <label for="withPicture"><?php _e('Show only listings with pictures', 'modern') ; ?></label>
-                                    </li>
-                                </ul>
-                            </div>
-                            <?php } ?>
-                            <?php if( osc_price_enabled_at_items() ) { ?>
-                            <div class="row two_input">
-                                <h6><?php _e('Price', 'modern') ; ?></h6>
-                                <div><?php _e('Min', 'modern') ; ?>.</div>
-                                <input type="text" id="priceMin" name="sPriceMin" value="<?php echo osc_search_price_min() ; ?>" size="6" maxlength="6" />
-                                <div><?php _e('Max', 'modern') ; ?>.</div>
-                                <input type="text" id="priceMax" name="sPriceMax" value="<?php echo osc_search_price_max() ; ?>" size="6" maxlength="6" />
-                            </div>
-                            <?php } ?>
-                            <?php  osc_get_non_empty_categories(); ?>
-                            <?php  if ( osc_count_categories() ) { ?>
-                                <div class="row checkboxes">
-                                    <h6><?php _e('Category', 'modern') ; ?></h6>
-                                    <ul>
-                                        <?php // RESET CATEGORIES IF WE USED THEN IN THE HEADER ?>
-                                        <?php osc_goto_first_category() ; ?>
-                                        <?php while(osc_has_categories()) { ?>
-                                            <li class="parent">
-                                                <input class="parent" type="checkbox" id="cat<?php echo osc_category_id(); ?>" name="sCategory[]" value="<?php echo osc_category_id(); ?>" <?php $parentSelected=false; if (in_array(osc_category_id(), osc_search_category()) || in_array(osc_category_slug()."/", osc_search_category()) || in_array(osc_category_slug(), osc_search_category()) || count(osc_search_category())==0 ){ echo 'checked="checked"'; $parentSelected=true;} ?> /> <label for="cat<?php echo osc_category_id(); ?>"><strong><?php echo osc_category_name(); ?></strong></label>
-                                                <?php if(osc_count_subcategories() > 0) { ?>
-                                                <ul class="sub">
-                                                    <?php while(osc_has_subcategories()) { ?>
-                                                    <li>
-                                                    <input type="checkbox" id="cat<?php echo osc_category_id(); ?>" name="sCategory[]" value="<?php echo osc_category_id(); ?>"  <?php if( $parentSelected || in_array(osc_category_id(), osc_search_category()) || in_array(osc_category_slug()."/", osc_search_category()) || in_array(osc_category_slug(), osc_search_category()) || count(osc_search_category())==0 ){echo 'checked="checked"';} ?> />
-                                                    <label for="cat<?php echo osc_category_id(); ?>"><strong><?php echo osc_category_name(); ?></strong></label>
-                                                    </li>
-                                                    <?php } ?>
-                                                </ul>
-                                                <?php } ?>
-                                            </li>
-                                        <?php } ?>
-                                    </ul>
-                                </div>
-                            <?php } ?>
-                        </fieldset>
-                        <?php
-                            if(osc_search_category_id()) {
-                                osc_run_hook('search_form', osc_search_category_id()) ;
-                            } else {
-                                osc_run_hook('search_form') ;
-                            }
-                        ?>
-                        <button type="submit"><?php _e('Apply', 'modern') ; ?></button>
-                    </form>
-                    <?php osc_alert_form() ; ?>
                 </div>
             </div>
             <script type="text/javascript">

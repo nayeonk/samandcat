@@ -51,7 +51,7 @@
     <fieldset class="main">
         <input type="text" name="sPattern"  id="query" value="<?php echo osc_esc_html( ( osc_search_pattern() != '' ) ? osc_search_pattern() : $sQuery ); ?>" />
         <?php  if ( osc_count_categories() ) { ?>
-            <?php osc_categories_select('sCategory', null, __('Select a category', 'modern')) ; ?>
+            <?php osc_categories_select('sCategory', null, __('All categories', 'modern')) ; ?>
         <?php  } ?>
     	<button type="submit"><?php _e('Search', 'modern') ; ?></button>
     </fieldset>

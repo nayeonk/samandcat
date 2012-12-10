@@ -28,6 +28,15 @@
     </head>
     <body>
         <?php osc_current_web_theme_path('header.php') ; ?>
+        <?php osc_show_widgets('header') ; $breadcrumb = osc_breadcrumb('&raquo;', false);
+            if( $breadcrumb != '') { ?>
+            <div class="breadcrumb">
+                <?php echo $breadcrumb; ?>
+                <div class="clear"></div>
+            </div>
+        <?php
+           }
+        ?>
         <div class="subpage">
             <div class="categories">
                         <?php osc_goto_first_category() ; ?>

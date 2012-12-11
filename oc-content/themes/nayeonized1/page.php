@@ -27,10 +27,28 @@
         <meta name="googlebot" content="noindex, nofollow" />
 
         <style>
-            table, tbody, tfoot, thead, tr, th, td {
+            .subpage .subpage_content table, tbody, tfoot, thead, tr, th, td {
                 vertical-align: top;
+                padding: 4px;
+            }
+
+            .subpage_content {
+                font-family: Tahoma, Geneva, sans-serif;
+                font-size: 14px;
+            }
+    
+            .subpage .subpage_content .title {
+                font-family: Verdana, Geneva, sans-serif;
+                font-weight: bold;
+                font-size: 24px;
+            }
+
+            .subpage .subpage_content .content23 {    
+                font-family: Tahoma, Geneva, sans-serif;    
+                font-size: 14px; 
             }
         </style>
+
     </head>
     <body>
         <?php osc_current_web_theme_path('header.php') ; ?>
@@ -48,8 +66,11 @@
                         <?php osc_goto_first_category() ; ?>
                         
                         <?php while ( osc_has_categories() ) { ?>
+
                             <div class="category">
+                                <?php if (osc_category_name() != "News" && osc_category_name() != "Episode Guide")  {?>
                                 <h1><strong><a class="category cat_<?php echo osc_category_id() ; ?>" href="<?php echo osc_search_category_url() ; ?>"><?php echo osc_category_name() ; ?></a> <span>(<?php echo osc_category_total_items() ; ?>)</span></strong></h1>
+                                <?php } ?>
                                 <?php if ( osc_count_subcategories() > 0 ) { ?>
                                     <ul>
                                         <?php while ( osc_has_subcategories() ) { ?>

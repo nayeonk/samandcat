@@ -87,7 +87,7 @@
                     <?php if ( osc_item_address() != "" ) { ?><li><?php _e("Address", 'modern') ; ?>: <strong><?php echo osc_item_address() ; ?></strong></li><?php } ?>
                 </ul>
                 <div id="description">
-                    <p><?php echo osc_item_description() ; ?></p>
+                    <p><em><?php echo osc_item_description() ; ?></em></p>
                     <div id="custom_fields">
                         <?php if( osc_count_item_meta() >= 1 ) { ?>
                             <br />
@@ -95,7 +95,7 @@
                                 <?php while ( osc_has_item_meta() ) { ?>
                                     <?php if(osc_item_meta_value()!='') { ?>
                                         <div class="meta">
-                                            <strong><?php echo osc_item_meta_name(); ?>:</strong> <?php echo osc_item_meta_value(); ?>
+                                            <strong><?php echo osc_item_meta_name(); ?>: </strong><?php echo osc_item_meta_value(); ?>
                                         </div>
                                     <?php } ?>
                                 <?php } ?>
@@ -109,10 +109,12 @@
                 <div id="useful_info">
                     <h2><?php _e('Useful information', 'modern') ; ?></h2>
                     <ul>
-                        <li><?php _e('Avoid scams by acting locally or paying with PayPal', 'modern'); ?></li>
-                        <li><?php _e('Never pay with Western Union, Moneygram or other anonymous payment services', 'modern'); ?></li>
-                        <li><?php _e('Don\'t buy or sell outside of your country. Don\'t accept cashier cheques from outside your country', 'modern'); ?></li>
-                        <li><?php _e('This site is never involved in any transaction, and does not handle payments, shipping, guarantee transactions, provide escrow services, or offer "buyer protection" or "seller certification"', 'modern') ; ?></li>
+                        <li><?php _e('Sam & Cat Central does not monitor the sites and may contain inappropriate personal opinions/contents.', 'modern'); ?></li>
+                        <li><?php _e('Sam & Cat Central is a database and is not responsible for keeping the contents of the site up to date.', 'modern'); ?></li>
+                        <li><?php _e('Report any spam by marking it appropriately', 'modern'); ?></li>
+                        <li><?php _e('Report broken links or links no longer valid as expired.', 'modern') ; ?></li>
+                        <li><?php _e('Protect your privacy on the internet. Don\'t share personal info.', 'modern') ; ?></li>
+                        <li><?php _e('This site is never involved in any transaction, and does not handle payments, shipping, etc.', 'modern') ; ?></li>
                     </ul>
                 </div>
                 <?php if( osc_comments_enabled() ) { ?>

@@ -37,7 +37,7 @@
     <div id="user_menu">
         <?php if( osc_users_enabled() || ( !osc_users_enabled() && !osc_reg_user_post() )) { ?>
             <div class="form_publish">
-                <div class="publish_button"><a href="<?php echo osc_item_post_url_in_category() ; ?>"><?php _e("Publish a link or site", 'modern');?></a></div>
+                <div class="publish_button"><a href="<?php echo osc_item_post_url_in_category() ; ?>"><img src="images/button_link_icon.gif" />&nbsp;<?php _e("Publish a link or site", 'modern');?></a></div>
             </div>
         <?php } ?>
     </div>

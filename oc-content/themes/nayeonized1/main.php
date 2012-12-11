@@ -53,13 +53,13 @@
                             <?php if (osc_category_name() != "News" && osc_category_name() != "Episode Guide")  {?>
                             <h1><strong><a class="category cat_<?php echo osc_category_id() ; ?>" href="<?php echo osc_search_category_url() ; ?>"><?php echo osc_category_name() ; ?></a> <span>(<?php echo osc_category_total_items() ; ?>)</span></strong></h1>
                             <?php } ?>
-                            <!--//<?php if ( osc_count_subcategories() > 0 ) { ?>
+                            <?php if ( osc_count_subcategories() > 0 ) { ?>
                                 <ul>
                                     <?php while ( osc_has_subcategories() ) { ?>
                                         <li><a class="category cat_<?php echo osc_category_id() ; ?>" href="<?php echo osc_search_category_url() ; ?>"><?php echo osc_category_name() ; ?></a> <span>(<?php echo osc_category_total_items() ; ?>)</span></li>
                                     <?php } ?>
                                 </ul>
-                            <?php } ?> -->
+                            <?php } ?>
                         </div>
                     <?php } ?>
                </div>
@@ -94,7 +94,7 @@
                                              <td class="text">
                                                  <h3><a href="<?php echo osc_item_url() ; ?>"><?php echo osc_item_title() ; ?></a></h3>
                                                  <p><strong><?php echo osc_item_category() ?> | <?php while ( osc_has_item_meta() ) { ?> <?php if ( osc_item_meta_name() == "Language *" ) { ?> <?php echo osc_item_meta_value(); ?> <?php } ?><?php } ?></strong></p>
-                                                 <p><?php echo osc_highlight( strip_tags( osc_item_description() ) ) ; ?></p>
+                                                 <p><em><?php echo osc_highlight( strip_tags( osc_item_description() ) ) ; ?></em></p>
                                              </td>                                       
                                          </tr>
                                         <?php $class = ($class == 'even') ? 'odd' : 'even' ; ?>

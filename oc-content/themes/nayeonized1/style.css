@@ -129,11 +129,12 @@ ul.breadcrumb li { float: left; padding: 0 2px; }
 .form_publish .search { float:left; width:720px; }
 .form_publish .search #expand_advanced { font-size:11px; margin-left:10px;}
 .form_publish .search .extras { display:none; }
-.form_publish .publish_button { height:32px; width:192px; padding-top: 8px; padding-left: 14px; background:#ec4901 url(images/button_link_bg.gif) repeat-x top; border:1px solid #c54f00;  -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; }
-.form_publish .publish_button:hover { background:#ec4901 url(); cursor: pointer;}
+.form_publish .publish_button { }
+.form_publish .publish_button:hover {}
 .form_publish .margin-bottom { margin-bottom: 10px; margin-top: 0px; }
-.form_publish .publish_button a { background:url(images/button_link_icon.gif) no-repeat 0 2px; color:#FFF; float:left; padding-left:15px; text-decoration:none; font-size:12pt; font-family: HoboStd;}
-.form_publish .publish_button a:hover { text-decoration: underline; }
+.form_publish .publish_button a { text-align:center; display:block; height:40px; width:206px; background: #ec4901 url(images/button_link_bg.gif) repeat-x top; border:1px solid #c54f00;  line-height: 40px; -moz-border-radius:5px; -webkit-border-radius:5px; -khtml-border-radius:5px; border-radius:5px; color:#FFF; text-decoration:none; font-size:12pt; font-family: HoboStd; }
+.form_publish .publish_button a:hover { text-decoration: none;  background:#ec4901; cursor: pointer; }
+.form_publish .publish_button a img { vertical-align:text-top; }
 
 /* -- HOME --------------------------------------- */
 .home #main { width:100%; overflow: hidden; }
@@ -189,15 +190,16 @@ ul.breadcrumb li { float: left; padding: 0 2px; }
 .home .navigation ul li em { color:#999; font-style:normal; }
 
 /* -- CUSTOM SUBPAGES ----------------------------------- */
+.subpage { overflow: hidden; }
 .subpage h1 { color:#000; font:26px Arial;}
 .subpage h1 strong { display:block; font-weight:bold; padding-bottom:7px; }
-.subpage .categories { clear:both; float:left; padding:40px 30px 25px 70px; width:148px; height:590px; background-color: #fbadff; border:1px solid #290158;}
+.subpage .categories { clear:both; float:left; padding:40px 30px 1000px 70px; margin-bottom: -1000px; width:148px; height:590px; background-color: #fbadff; border:1px solid #290158;}
 .subpage .categories .category { margin-bottom:15px; }
 .subpage .categories .category h1 { color:#000; font:15px Arial; margin-bottom:5px; }
 .subpage .categories .category h1 a { text-decoration: none; }
 .subpage .categories .category h1 span { color:#290158; }
 .subpage .categories .category li { border-bottom:1px dotted #DDD; color:#CCC; font-size:11px; padding:5px 0; }
-.subpage .subpage_content { float:left; width: 708px; height:620px; padding:15px 20px 20px 20px;background-color: #fedcff; border:1px solid #290158; };
+.subpage .subpage_content { float:left; width: 708px;  padding:15px 20px 20px 20px;background-color: #fedcff; border:1px solid #290158; };
 .subpage .subpage_content h1 { color:#000; font:18px Arial; }
 
 /* -- CATEGORY SEARCH LISTING --------------------------- */
@@ -298,6 +300,8 @@ ul.breadcrumb li { float: left; padding: 0 2px; }
 #item_head #report span a { display:block; font-size:11px; margin:4px 0;}
 .item { background-color:#9000b8; }
 .item #main { float:left; width:600px; padding-left:15px; color:#f3f1f1; }
+.item #main a { color:#fbaeff; text-decoration: none;}
+.item #main a:hover { color:#f405d2; text-decoration: none;}
 .item #main h2 { border-bottom:1px solid #DDD; color:#000; font-size:14px; margin-bottom: 15px; padding-bottom:5px;}
 .item #main #useful_info { color:#000; }
 .item #sidebar { float:right; padding-top:22px; width:330px; }

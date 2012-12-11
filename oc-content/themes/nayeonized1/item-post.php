@@ -26,6 +26,13 @@
         <meta name="robots" content="noindex, nofollow" />
         <meta name="googlebot" content="noindex, nofollow" />
         
+        <style>
+        .active {
+            color: gray;
+            font-family: arial;
+            font-style: italic;
+        }
+        </style>
         <!-- only item-post.php -->
         <script type="text/javascript" src="<?php echo osc_current_web_theme_js_url('jquery.validate.min.js') ; ?>"></script>
         <?php ItemForm::location_javascript_new(); ?>
@@ -87,15 +94,15 @@
             });
             <?php }; ?>
             $().ready(function(){
-                $(".description textarea").attr("value", "All description must be written in English.");
-                $("#meta_link").attr("value", "(i.e. http://www.youtube.com)");
+                //$(".description textarea").attr("value", "All description must be written in English.");
+                $(".description textarea").addClass('active').val("All description must be written in English.");
+                //$("#meta_link").attr("value", "(i.e. http://www.youtube.com)");
 
-                $(".description textarea").bind('click', function() {
-                    $(this).attr("value", "");
+                $(".description textarea").one("focus", function() {
+                    $(this).val("");
                 });
-                $("#meta_link").bind('click', function() {
-                    $(this).attr("value", "");
-                });
+
+                
             });
         </script>
         <!-- end only item-post.php -->
@@ -158,7 +165,7 @@
                     <!-- seller info -->
                     <?php if(!osc_is_web_user_logged_in() ) { ?>
                     <div class="box seller_info">
-                        <h2><?php _e("Seller's information", 'modern'); ?></h2>
+                        <h2><?php _e("Publisher's information", 'modern'); ?></h2>
                         <div class="row">
                             <label for="contactName"><?php _e('Name', 'modern'); ?></label>
                             <?php ItemForm::contact_name_text() ; ?>
